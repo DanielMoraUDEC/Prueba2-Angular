@@ -1,0 +1,60 @@
+
+  table {
+    width: 100%;
+    text-align: center;
+  }
+
+  .column {
+    flex: 50%;
+    padding: 20px;
+  }
+
+  .row {
+    display: flex;
+  }
+
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+  }
+  .center{
+    text-align: center;
+    font-size: 40px;
+    color: #e0dfdc;
+    letter-spacing: .1em;
+    text-shadow: 
+
+      0 6px 0 #242424, 
+      0 7px 0 #222, 
+      0 8px 0 #202020, 
+      0 9px 0 #1e1e1e, 
+      0 10px 0 #1c1c1c, 
+      0 11px 0 #1a1a1a, 
+      0 12px 0 #181818, 
+      0 13px 0 #161616, 
+      0 14px 0 #141414, 
+      0 15px 0 #121212, 
+      0 22px 30px rgba(0, 0, 0, 0.9);
+  }
+
+
+
+  h2{
+    font-size: 25px;
+    color: #e0dfdc;
+
+  }
+  .mat-progress-bar{
+    position:fixed;
+    top:0px;
+}
+table th{
+  font-size: 18px;
+  color: #BB8FCE ;
+  text-align: center;
+}
+
+table td{
+  color: aliceblue;
+}

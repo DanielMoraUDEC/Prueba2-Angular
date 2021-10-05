@@ -1,0 +1,96 @@
+
+<mat-progress-bar mode="indeterminate" *ngIf="cargando"></mat-progress-bar>
+
+<mat-toolbar  class="example-toolbar">
+  <button mat-icon-button (click)="drawer.toggle()">
+    <mat-icon *ngIf="!drawer.opened">menu</mat-icon>
+    <mat-icon *ngIf="drawer.opened">close</mat-icon>
+  </button>
+
+  <h1 class="example-app-name" routerLink="/" >Envios UDEC</h1>
+
+  <span class="example-spacer"></span>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/perfil">
+      <mat-icon>account_box</mat-icon>
+      <span>Mi perfil</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Cerrar cesión</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container">
+  
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <button mat-menu-item style="cursor: pointer" routerLink="/buscar" (click)="cargar()">
+      <mat-icon>apartment</mat-icon>
+      <span>Ciudades</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item style="cursor: pointer" routerLink="/vehiculo" (click)="cargar()">
+      <mat-icon>directions_car</mat-icon>
+      <span>Vehiculos</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item style="cursor: pointer" routerLink="/ingresar" (click)="cargar()">
+      <mat-icon>manage accounts</mat-icon>
+      <span>Ingresar</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item style="cursor: pointer" routerLink="/buscar" (click)="cargar()">
+      <mat-icon>edit</mat-icon>
+      <span>Editar</span>
+    </button>
+    
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+  <router-outlet></router-outlet>
+    
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+
+<!--
+<mat-sidenav-container class="example-sidenav-container" >
+    <mat-sidenav #sidenav>
+      <button mat-menu-item style="cursor: pointer" routerlink='/buscar'>
+        <mat-icon>search</mat-icon>
+        <span>Buscar</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item style="cursor: pointer">
+        <mat-icon>search</mat-icon>
+        <span>Buscar2</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item style="cursor: pointer">
+        <mat-icon>search</mat-icon>
+        <span>Buscar3</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item style="cursor: pointer">
+        <mat-icon>search</mat-icon>
+        <span>Buscar</span>
+      </button>
+    </mat-sidenav>
+  
+  </mat-sidenav-container>
+-->
+
+<!--
+  <mat-sidenav-content>Main
+    <button (click)="opened=!opened">Abrir menú</button>
+  </mat-sidenav-content>
+
+-->

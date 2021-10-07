@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DepartamentoService } from 'src/app/Servicios/departamento.service';
+import { MatSort } from '@angular/material/sort';
 
 
 @Component({
@@ -13,13 +14,14 @@ import { DepartamentoService } from 'src/app/Servicios/departamento.service';
 })
 export class CiudadesComponent implements OnInit {
 
-  displayedColumns2: string[] = ['id', 'nombre'];
+  displayedColumns2: string[] = ['idCiudad', 'nombre'];
 
   listaCiudades: any[] = [];
   dataSource2 = new MatTableDataSource([]);
   carga: boolean = false;
 
   @ViewChild('paginator2') paginator2: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   
   constructor(private departamentoService: DepartamentoService, 
     private route: ActivatedRoute) { }
@@ -42,6 +44,7 @@ export class CiudadesComponent implements OnInit {
             })
              this.dataSource2.data = this.listaCiudades;
              this.dataSource2.paginator = this.paginator2;
+             this.dataSource2.sort = this.sort;
              this.carga = false;
           });
 
@@ -49,6 +52,15 @@ export class CiudadesComponent implements OnInit {
 
     
 
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource2.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource2.paginator) {
+      this.dataSource2.paginator.firstPage();
+    }
   }
 
 

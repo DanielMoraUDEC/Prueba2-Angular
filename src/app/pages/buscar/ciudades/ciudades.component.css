@@ -2,7 +2,6 @@
   
   table {
     width: 100%;
-    text-align: center;
   }
   .center{
     text-align: center;
@@ -38,7 +37,6 @@
 table th{
   font-size: 18px;
   color: #BB8FCE ;
-  text-align: center;
 }
 
 table td{

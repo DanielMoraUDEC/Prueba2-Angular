@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Departamento } from './../../Models/departamento';
 import { ActivatedRoute } from '@angular/router';
+import { MatSort } from '@angular/material/sort';
 
 
 
@@ -14,7 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BuscarComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'nombre', 'Ciudades'];
+  displayedColumns: string[] = ['idDepartamento', 'nombre', 'Ciudades'];
   
   //inyectar las dependencias
   constructor(private departamentoService: DepartamentoService,
@@ -24,7 +25,9 @@ export class BuscarComponent implements OnInit {
   dataSource = new MatTableDataSource<Departamento>();
   carga: boolean = false;
   @ViewChild('paginator1') paginator: MatPaginator;
-  
+  @ViewChild(MatSort) sort: MatSort;
+
+
   ngOnInit(): void {
     this.carga = true;
     //this.listaDepartamento = [];
@@ -38,10 +41,24 @@ export class BuscarComponent implements OnInit {
       })*/
        this.dataSource = new MatTableDataSource(data);
        this.dataSource.paginator = this.paginator;
+       this.dataSource.sort = this.sort;
        this.carga = false;
     });
+    
 
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  
+
 
 
 

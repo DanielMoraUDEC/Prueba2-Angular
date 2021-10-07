@@ -13,12 +13,15 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatInputModule} from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSortModule} from '@angular/material/sort';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+
+
 @NgModule({
   declarations: [],
   imports: [
-
-
-  CommonModule,
+    CommonModule,
     MatButtonModule,
     MatSliderModule,
     MatToolbarModule,
@@ -31,8 +34,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatGridListModule,
     MatInputModule,
     MatPaginatorModule,
-    MatSnackBarModule
-
+    MatSnackBarModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatSelectModule,
 
   ], exports:[
     MatButtonModule,
@@ -47,7 +52,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatGridListModule,
     MatInputModule,
     MatPaginatorModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatSelectModule
   ]
 })
 export class MatiModuleModule { }

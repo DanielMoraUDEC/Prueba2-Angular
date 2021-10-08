@@ -113,7 +113,7 @@ export class VehiculoComponent implements OnInit {
       if(error.error.status == 400){
         this.openSnackBar("Vehiculo ya registrado", "Error");
       }
-    })
+    });
   }
   
 

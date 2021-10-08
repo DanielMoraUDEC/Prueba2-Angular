@@ -1,4 +1,94 @@
-<p>edit-vehi works!</p>
+<h1 class="center">Editar vehiculo</h1>
 
+
+    <br>
+    <mat-divider></mat-divider>
+
+    <form class="example-form" [formGroup]="form" (ngSubmit)="save($event)">
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Placa</mat-label>
+                <input matInput placeholder="abc-123" formControlName="placa" value="" [(ngModel)]="placa">
+            </mat-form-field>
+            <div *ngIf="form.get('placa').errors && form.get('placa').touched">
+              <mat-label *ngIf="form.get('placa').hasError('required')">
+                Es un campo requerido
+              </mat-label>
+              <mat-label *ngIf="form.get('placa').hasError('maxlength')">
+                Campo supera el número de caracteres
+              </mat-label>
+              <mat-label *ngIf="form.get('placa').hasError('minlength')">
+                Campo es inferior al número de caracteres
+              </mat-label>
+            </div>  
+        </div>
+
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Modelo</mat-label>
+                <mat-select formControlName="modelo">
+                  <mat-option *ngFor="let modelo of modelos" [value]="modelo.viewValue">
+                    {{modelo.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div *ngIf="form.get('modelo').errors && form.get('modelo').touched">
+                <mat-label *ngIf="form.get('modelo').hasError('required')">
+                  Es un campo requerido
+                </mat-label>
+              </div> 
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+              <mat-label>Marca</mat-label>
+              <mat-select formControlName="marca">
+                <mat-option *ngFor="let marca of marcas" [value]="marca.viewValue">
+                  {{marca.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="form.get('marca').errors && form.get('marca').touched">
+              <mat-label *ngIf="form.get('marca').hasError('required')">
+                Es un campo requerido
+              </mat-label>
+            </div>
+         </div>
+        <div>
+          <mat-form-field appearance="fill">
+              <mat-label>Tipo Vehiculo</mat-label>
+              <mat-select formControlName="tipoVehiuclo">
+                <mat-option *ngFor="let tipoV of tiposV" [value]="tipoV.viewValue">
+                  {{tipoV.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="form.get('tipoVehiuclo').errors && form.get('tipoVehiuclo').touched">
+              <mat-label *ngIf="form.get('tipoVehiuclo').hasError('required')">
+                Es un campo requerido
+              </mat-label>
+            </div>
+      </div>
+      
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Capacidad</mat-label>
+                <input  type="text" matInput placeholder="200Kg" formControlName="capacidad" value="" [(ngModel)]="capacidad">
+              </mat-form-field>
+              <div *ngIf="form.get('capacidad').errors && form.get('capacidad').touched">
+                <mat-label *ngIf="form.get('capacidad').hasError('required')">
+                  Es un campo requerido
+                </mat-label>
+                <mat-label *ngIf="form.get('capacidad').hasError('maxlength')">
+                  Campo supera el número de caracteres
+                </mat-label>
+                <mat-label *ngIf="form.get('capacidad').hasError('minlength')">
+                  Campo es inferior al número de caracteres
+                </mat-label>
+              </div>
+        </div>
+        <div>
+          <button type="submit" mat-raised-button color="primary"><mat-icon>edit</mat-icon>Editar</button>
+        </div>
+      </form>
 
 <button mat-raised-button color="primary" [routerLink]="['/vehiculo']"><mat-icon>west</mat-icon></button>

@@ -30,6 +30,10 @@
 <mat-drawer-container class="example-container">
   
   <mat-drawer #drawer class="example-sidenav" mode="side">
+    <button mat-menu-item style="cursor: pointer" routerLink="/index" (click)="cargar()">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
     <button mat-menu-item style="cursor: pointer" routerLink="/buscar" (click)="cargar()">
       <mat-icon>apartment</mat-icon>
       <span>Ciudades</span>
@@ -45,10 +49,6 @@
       <span>Ingresar</span>
     </button>
     <mat-divider></mat-divider>
-    <button mat-menu-item style="cursor: pointer" routerLink="" (click)="cargar()">
-      <mat-icon>edit</mat-icon>
-      <span>Editar</span>
-    </button>
     
   </mat-drawer>
 

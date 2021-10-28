@@ -1,1 +1,50 @@
-<p>ingresar works!</p>
+<h1 class="center">Log in</h1>
+
+    <br>
+    <mat-divider></mat-divider>
+
+    <br>
+    <div>
+        <img src='../../../assets/Daco_2735205.png' style="width: 130px; height: auto; display: block; margin: auto;">
+    </div>
+
+
+    <form class="example-form" [formGroup]="form" (ngSubmit)="save($event)">
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Usuario</mat-label>
+                <input matInput placeholder="toreto" formControlName="usuario" value="">
+            </mat-form-field>
+            <div *ngIf="form.get('usuario').errors && form.get('usuario').touched">
+                <mat-label *ngIf="form.get('usuario').hasError('required')">
+                  Es un campo requerido
+                </mat-label>
+            </div> 
+            
+        </div>
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput formControlName="contrasena" value="">
+            </mat-form-field>
+            <div *ngIf="form.get('contrasena').errors && form.get('contrasena').touched">
+                <mat-label *ngIf="form.get('contrasena').hasError('contrasena')">
+                  Es un campo requerido
+                </mat-label>
+            </div> 
+            <div *ngIf="form.get('contrasena').errors && form.get('contrasena').touched">
+              <mat-label *ngIf="form.get('contrasena').hasError('required')">
+                Es un campo requerido
+              </mat-label>
+          </div>
+            
+        </div>
+
+        
+        <div>
+          <button type="submit" mat-raised-button color="primary"><mat-icon>login</mat-icon> log in</button>
+        </div>
+      </form>
+
+<button mat-raised-button color="primary" [routerLink]="['/index']"><mat-icon>west</mat-icon></button>
+

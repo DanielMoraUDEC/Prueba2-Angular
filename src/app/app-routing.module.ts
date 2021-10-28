@@ -9,7 +9,7 @@ import { EditVehiComponent } from './pages/vehiculo/edit-vehi/edit-vehi.componen
 import { NoFoundComponent } from './share/no-found/no-found.component';
 import { ErrorComponent } from './share/error/error.component';
 import { IndexComponent } from './pages/index/index.component';
-
+import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 
 
 const routes: Routes = [
@@ -24,6 +24,7 @@ const routes: Routes = [
     {path: 'editVehi/:idVeh', component:EditVehiComponent}
   ]},
   {path: 'error', component:ErrorComponent},
+  {path: 'notAllowed', component:NotAllowedComponent},
   {path: '**', component:NoFoundComponent}
 ];
 

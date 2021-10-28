@@ -8,7 +8,7 @@
         <div>
             <mat-form-field class="example-full-width">
                 <mat-label>Placa</mat-label>
-                <input matInput placeholder="abc-123" formControlName="placa" value="" [(ngModel)]="placa">
+                <input matInput  formControlName="placa" value="" [(ngModel)]="placa" [readonly]="true">
             </mat-form-field>
             <div *ngIf="form.get('placa').errors && form.get('placa').touched">
               <mat-label *ngIf="form.get('placa').hasError('required')">
@@ -26,7 +26,7 @@
         <div>
             <mat-form-field appearance="fill">
                 <mat-label>Modelo</mat-label>
-                <mat-select formControlName="modelo">
+                <mat-select formControlName="modelo" [(ngModel)]="modelo">
                   <mat-option *ngFor="let modelo of modelos" [value]="modelo.viewValue">
                     {{modelo.viewValue}}
                   </mat-option>
@@ -41,7 +41,7 @@
         <div>
           <mat-form-field appearance="fill">
               <mat-label>Marca</mat-label>
-              <mat-select formControlName="marca">
+              <mat-select formControlName="marca" [(ngModel)]="marca">
                 <mat-option *ngFor="let marca of marcas" [value]="marca.viewValue">
                   {{marca.viewValue}}
                 </mat-option>
@@ -56,7 +56,7 @@
         <div>
           <mat-form-field appearance="fill">
               <mat-label>Tipo Vehiculo</mat-label>
-              <mat-select formControlName="tipoVehiuclo">
+              <mat-select formControlName="tipoVehiuclo" [(ngModel)]="tipoVehiuclo">
                 <mat-option *ngFor="let tipoV of tiposV" [value]="tipoV.viewValue">
                   {{tipoV.viewValue}}
                 </mat-option>
@@ -71,8 +71,8 @@
       
         <div>
             <mat-form-field class="example-full-width">
-                <mat-label>Capacidad</mat-label>
-                <input  type="text" matInput placeholder="200Kg" formControlName="capacidad" value="" [(ngModel)]="capacidad">
+                <mat-label>Capacidad<strong><u>en Kg</u></strong></mat-label>
+                <input  type="number" matInput placeholder="200Kg" formControlName="capacidad" value="" [(ngModel)]="capacidad">
               </mat-form-field>
               <div *ngIf="form.get('capacidad').errors && form.get('capacidad').touched">
                 <mat-label *ngIf="form.get('capacidad').hasError('required')">

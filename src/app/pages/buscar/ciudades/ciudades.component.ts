@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DepartamentoService } from 'src/app/Servicios/departamento.service';
 import { MatSort } from '@angular/material/sort';
+import { ProgessBarService } from 'src/app/Servicios/progess-bar.service';
 
 
 @Component({
@@ -18,21 +19,18 @@ export class CiudadesComponent implements OnInit {
 
   listaCiudades: any[] = [];
   dataSource2 = new MatTableDataSource([]);
-  carga: boolean = false;
 
   @ViewChild('paginator2') paginator2: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   
   constructor(private departamentoService: DepartamentoService, 
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, private barra: ProgessBarService) { }
 
   ngOnInit(): void {
-    
-    this.carga = true;
+    this.barra.progressBarReactive.next(false);
     this.listaCiudades = [];
 
     this.route.params.subscribe((params: Params) =>{
-      this.carga = true;
         let value = params['idDep']
         
         this.departamentoService.listarCiudades(value).subscribe(data =>{
@@ -45,7 +43,7 @@ export class CiudadesComponent implements OnInit {
              this.dataSource2.data = this.listaCiudades;
              this.dataSource2.paginator = this.paginator2;
              this.dataSource2.sort = this.sort;
-             this.carga = false;
+             this.barra.progressBarReactive.next(true);
           });
 
     });

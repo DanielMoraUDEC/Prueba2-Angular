@@ -17,6 +17,15 @@ import { NoFoundComponent } from './share/no-found/no-found.component';
 import { ErrorInterceptorService } from './share/error-interceptor.service';
 import { ErrorComponent } from './share/error/error.component';
 import { IndexComponent } from './pages/index/index.component';
+import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { environment } from 'src/environments/environment';
+
+
+export function tokenGetter(){
+  let tk = sessionStorage.getItem(environment.TOKEN);
+  return tk != null ? tk:'';
+}
 
 @NgModule({
   declarations: [
@@ -29,18 +38,27 @@ import { IndexComponent } from './pages/index/index.component';
     EditVehiComponent,
     NoFoundComponent,
     ErrorComponent,
-    IndexComponent
+    IndexComponent,
+    NotAllowedComponent
   ],
   imports: [
 
 
-  BrowserModule,
+    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     MatiModuleModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: tokenGetter,
+        allowedDomains: ['159.223.107.103:8080'],
+        disallowedRoutes: [`${environment.Host}/oauth/token`],
+      },
+      
+    }),
   ],
   providers: [
     {

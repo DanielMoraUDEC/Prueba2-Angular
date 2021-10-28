@@ -6,13 +6,21 @@ import { catchError, retry, tap } from 'rxjs/operators';
 import { ConstantPool } from '@angular/compiler';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { ResultJson, TestService } from './../Servicios/errores.service';
+import { ProgessBarService } from '../Servicios/progess-bar.service';
+import { Errores } from '../Models/errores';
+import { getMatIconFailedToSanitizeUrlError } from '@angular/material/icon';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorInterceptorService implements HttpInterceptor{
 
-  constructor(private _snackBar: MatSnackBar, private router: Router) { }
+  constructor(private _snackBar: MatSnackBar, private router: Router, private errorService: TestService ,
+    private barra: ProgessBarService) { }
+
+    resultJSON: ResultJson;
+    ResultJsonString : any;
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     //throw new Error('Method not implemented.');
@@ -23,34 +31,47 @@ export class ErrorInterceptorService implements HttpInterceptor{
           throw new Error(event.body.errorMessage)
         }
       }
-    })).pipe(catchError((err)=>{
-      console.log(err);
+    })).pipe(catchError((error)=>{
+      console.log(error);
       /**lista de errores */
 
-      var mensaje = err.error.message;
-      var nuevoMensa = mensaje.slice(4,mensaje.length);
+      let mensaje = error.error.message;
+      let nuevoMensa = mensaje.slice(4,mensaje.length);
 
-      if(err.error.status == 400){
+      this.barra.progressBarReactive.next(true);
+
+      if(error.status == 400){
         this.openSnackBar(nuevoMensa, "!ups¡"); 
+        this.barra.progressBarReactive.next(true);
       }
-      else if(err.error.status == 404){
-        this.openSnackBar(nuevoMensa, "!ups¡");   
+      else if(error.status == 401){
+        this.router.navigate(['/notAllowed']);
+        console.log(error.console.message);  
+        this.barra.progressBarReactive.next(true);
       }
-      else if(err.error.status == 405){
-        this.openSnackBar(nuevoMensa, "!ups¡");   
+      else if(error.status == 404){
+        this.openSnackBar(nuevoMensa, "!ups¡");  
+        this.barra.progressBarReactive.next(true); 
       }
-      else if(err.error.status == 415){
+      else if(error.status == 405){
         this.openSnackBar(nuevoMensa, "!ups¡"); 
+        this.barra.progressBarReactive.next(true);  
       }
-      else if(err.error.status == 500){
+      else if(error.status == 415){
+        this.openSnackBar(nuevoMensa, "!ups¡"); 
+        this.barra.progressBarReactive.next(true);
+      }
+      else if(error.status == 500){
         this.router.navigate(['/error']);
-        console.log(err.console.message);  
+        console.log(error.console.message);  
+        this.barra.progressBarReactive.next(true);
       }
+
       return EMPTY;
     }))
   }
 
-
+  
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 4000,

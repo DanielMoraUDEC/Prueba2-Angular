@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Departamento } from './../../Models/departamento';
 import { ActivatedRoute } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
+import { ProgessBarService } from './../../Servicios/progess-bar.service';
 
 
 
@@ -19,20 +20,21 @@ export class BuscarComponent implements OnInit {
   
   //inyectar las dependencias
   constructor(private departamentoService: DepartamentoService,
-    public route: ActivatedRoute) { }  
+    public route: ActivatedRoute, private barra: ProgessBarService ) { }  
 
   //listaDepartamento: any[] = [];
   dataSource = new MatTableDataSource<Departamento>();
-  carga: boolean = false;
+
   @ViewChild('paginator1') paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
 
   ngOnInit(): void {
-    this.carga = true;
+
     //this.listaDepartamento = [];
  
     console.log("Se ejecuto automaticamente");
+    this.barra.progressBarReactive.next(false);
     this.departamentoService.listar().subscribe(data => {
       /*data.forEach(departamento =>{
         console.log("ID: " + departamento.idDepartamento + " Nombre: " + departamento.nombre);
@@ -42,7 +44,8 @@ export class BuscarComponent implements OnInit {
        this.dataSource = new MatTableDataSource(data);
        this.dataSource.paginator = this.paginator;
        this.dataSource.sort = this.sort;
-       this.carga = false;
+       this.barra.progressBarReactive.next(true);
+
     });
     
 

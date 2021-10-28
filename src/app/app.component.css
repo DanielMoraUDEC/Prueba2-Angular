@@ -16,6 +16,10 @@
  mat-drawer, mat-drawer-content{
      padding: 16px;
  }
+ .mat-progress-bar{
+    position:fixed;
+    top:0px;
+}
  
 
   

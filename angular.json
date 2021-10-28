@@ -20,8 +20,12 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
+              "src",
+              "src/app",
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/errores.json"
+
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
@@ -85,8 +89,10 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
+              "src",
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/errores.json"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",

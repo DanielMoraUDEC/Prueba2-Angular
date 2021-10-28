@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProgessBarService } from 'src/app/Servicios/progess-bar.service';
 
 @Component({
   selector: 'app-index',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
+  constructor(private barra: ProgessBarService) { }
 
   ngOnInit(): void {
+    this.barra.progressBarReactive.next(false);
+    this.barra.progressBarReactive.next(true);
   }
 
 }

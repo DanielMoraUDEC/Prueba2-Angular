@@ -6,9 +6,11 @@
 
     <form class="example-form" [formGroup]="form" (ngSubmit)="save($event)">
         <div>
-            <mat-form-field class="example-full-width">
-                <mat-label>Placa</mat-label>
-                <input matInput placeholder="abc-123" formControlName="placa" value="">
+
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width" style="width: 130px;">
+              <mat-label>Placa</mat-label>
+              <input matInput placeholder="ABC" formControlName="placa">
             </mat-form-field>
             <div *ngIf="form.get('placa').errors && form.get('placa').touched">
               <mat-label *ngIf="form.get('placa').hasError('required')">
@@ -20,7 +22,34 @@
               <mat-label *ngIf="form.get('placa').hasError('minlength')">
                 Campo es inferior al número de caracteres
               </mat-label>
-            </div>  
+            </div>
+          </td>
+          <td>
+            <label style="margin: 5px;">-</label>
+          </td>
+            
+            
+            <td><mat-form-field class="example-full-width" style="width: 130px;">
+              <mat-label>Placa</mat-label>
+              <input type="text" matInput placeholder="222" formControlName="placanum">
+            </mat-form-field>
+            <div *ngIf="form.get('placanum').errors && form.get('placanum').touched">
+              <mat-label *ngIf="form.get('placanum').hasError('required')">
+                Es un campo requerido
+              </mat-label>
+              <mat-label *ngIf="form.get('placanum').hasError('maxlength')">
+                Campo supera el número de caracteres
+              </mat-label>
+              <mat-label *ngIf="form.get('placanum').hasError('minlength')">
+                Campo es inferior al número de caracteres
+              </mat-label>
+            </div>
+          </td>
+            
+          </tr>
+
+          </table>
+   
         </div>
 
         <div>
@@ -71,8 +100,8 @@
       
         <div>
             <mat-form-field class="example-full-width">
-                <mat-label>Capacidad</mat-label>
-                <input  type="text" matInput placeholder="200Kg" formControlName="capacidad" value="">
+                <mat-label>Capacidad <strong> <u>en Kg</u></strong></mat-label>
+                <input  type="text" matInput placeholder="200" formControlName="capacidad" value="">
               </mat-form-field>
               <div *ngIf="form.get('capacidad').errors && form.get('capacidad').touched">
                 <mat-label *ngIf="form.get('capacidad').hasError('required')">

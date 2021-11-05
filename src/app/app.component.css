@@ -13,13 +13,33 @@
      width: 220px;
   }
  
- mat-drawer, mat-drawer-content{
+ mat-drawer{
      padding: 16px;
  }
+ 
  .mat-progress-bar{
     position:fixed;
     top:0px;
 }
+
+h1{
+    font-size: 25px;
+    color:white;
+    
+
+}
+
+.example-toolbar{
+    border: 2px;
+    border-style: solid;
+    border-color: darkgrey;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    
+}
+
+
  
 
   

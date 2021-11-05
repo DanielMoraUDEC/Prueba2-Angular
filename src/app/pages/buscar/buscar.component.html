@@ -1,5 +1,5 @@
 
-<div [hidden]="route.children.length !==0">
+<div [hidden]="route.children.length !==0" class="contenedor">
     <h1 class="center">Departamentos de</h1>
     <h1 class="center">Colombia</h1>
 
@@ -7,7 +7,7 @@
     <mat-divider></mat-divider>
 
     <mat-form-field>
-        <mat-label>Filter</mat-label>
+        <mat-label> Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)"  #input>
     </mat-form-field>
     

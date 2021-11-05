@@ -71,8 +71,8 @@
       
         <div>
             <mat-form-field class="example-full-width">
-                <mat-label>Capacidad<strong><u>en Kg</u></strong></mat-label>
-                <input  type="number" matInput placeholder="200Kg" formControlName="capacidad" value="" [(ngModel)]="capacidad">
+                <mat-label>Capacidad<strong><u> en Kg</u></strong></mat-label>
+                <input  type="text" matInput placeholder="200Kg" formControlName="capacidad" value="" [(ngModel)]="capacidad">
               </mat-form-field>
               <div *ngIf="form.get('capacidad').errors && form.get('capacidad').touched">
                 <mat-label *ngIf="form.get('capacidad').hasError('required')">

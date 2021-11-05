@@ -34,10 +34,9 @@ export class CiudadesComponent implements OnInit {
         let value = params['idDep']
         
         this.departamentoService.listarCiudades(value).subscribe(data =>{
-          console.log("Ciudades: del id "+ value);
-          console.log("");
+          
             data.forEach(ciudad =>{
-             console.log("ID: " +ciudad.idCiudad  + " Nombre: " + ciudad.nombre );
+             
              this.listaCiudades.push({idCiudad: ciudad.idCiudad, nombre: ciudad.nombre});
             })
              this.dataSource2.data = this.listaCiudades;

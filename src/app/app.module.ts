@@ -20,6 +20,8 @@ import { IndexComponent } from './pages/index/index.component';
 import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
+import { UsuarioComponent } from './pages/usuario/usuario.component';
+import { UsuarioIdComponent } from './pages/usuario-id/usuario-id.component';
 
 
 export function tokenGetter(){
@@ -39,7 +41,9 @@ export function tokenGetter(){
     NoFoundComponent,
     ErrorComponent,
     IndexComponent,
-    NotAllowedComponent
+    NotAllowedComponent,
+    UsuarioComponent,
+    UsuarioIdComponent
   ],
   imports: [
 

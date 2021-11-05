@@ -31,7 +31,7 @@ export class VehiculoComponent implements OnInit {
   pageIndex = 0;
  
   constructor(private vehiculoService: VehiculoService,
-  private _snackBar: MatSnackBar, public route: ActivatedRoute,private barra: ProgessBarService) { }
+  private _snackBar: MatSnackBar, public route: ActivatedRoute, private barra: ProgessBarService) { }
 
   ngOnInit(): void {
   

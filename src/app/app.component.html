@@ -2,13 +2,13 @@
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div>
 
-<mat-toolbar  class="example-toolbar">
+<mat-toolbar  class="example-toolbar" style="background-color: black;">
   <button mat-icon-button (click)="drawer.toggle()">
     <mat-icon *ngIf="!drawer.opened">menu</mat-icon>
     <mat-icon *ngIf="drawer.opened">close</mat-icon>
   </button>
 
-  <h1 class="example-app-name" routerLink="/" >Envios UDEC</h1>
+  <h1 class="example-app-name" routerLink="/" >Envios Net</h1>
 
   <span class="example-spacer"></span>
 
@@ -18,11 +18,12 @@
 
   <mat-menu #menu="matMenu">
     <div [hidden]= "logout.estaLogueado() == true">
-      <button mat-menu-item routerLink="/ingresar">
+      <button mat-menu-item routerLink="/ingresar" >
         <mat-icon>manage accounts</mat-icon>
         <span>Log in</span>
       </button>
     </div >
+
     <div [hidden]= "logout.estaLogueado() == false">
       <button mat-menu-item routerLink="/perfil">
         <mat-icon>account_box</mat-icon>
@@ -44,14 +45,27 @@
       <mat-icon>home</mat-icon>
       <span>Home</span>
     </button>
-    <button mat-menu-item style="cursor: pointer" routerLink="/buscar" >
-      <mat-icon>apartment</mat-icon>
-      <span>Ciudades</span>
-    </button>
     <mat-divider></mat-divider>
-    <button mat-menu-item style="cursor: pointer" routerLink="/vehiculo" >
-      <mat-icon>directions_car</mat-icon>
-      <span>Vehiculos</span>
+    <div [hidden]= "logout.estaLogueado() == false">
+      <button mat-menu-item style="cursor: pointer" routerLink="/buscar" >
+        <mat-icon>apartment</mat-icon>
+        <span>Ciudades</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item style="cursor: pointer" routerLink="/vehiculo" >
+        <mat-icon>directions_car</mat-icon>
+        <span>Vehiculos</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item style="cursor: pointer" routerLink="/usuario" >
+        <mat-icon>account_box</mat-icon>
+        <span>Conductores</span>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+    <button mat-menu-item style="cursor: pointer" routerLink="/help" >
+      <mat-icon>contact_support</mat-icon>
+      <span>Contactenos</span>
     </button>
     <mat-divider></mat-divider>
   </mat-drawer>

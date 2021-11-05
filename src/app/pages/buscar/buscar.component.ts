@@ -20,7 +20,7 @@ export class BuscarComponent implements OnInit {
   
   //inyectar las dependencias
   constructor(private departamentoService: DepartamentoService,
-    public route: ActivatedRoute, private barra: ProgessBarService ) { }  
+    public route: ActivatedRoute, private barra: ProgessBarService  ) { }  
 
   //listaDepartamento: any[] = [];
   dataSource = new MatTableDataSource<Departamento>();
@@ -59,15 +59,5 @@ export class BuscarComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
-  
-
-
-
-
-
-
-
-    
 
 }

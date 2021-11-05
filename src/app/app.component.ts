@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ProgessBarService } from './Servicios/progess-bar.service';
 import { LoginService } from './Servicios/login.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { GuardianService } from './share/guardian.service';
 
 
 
@@ -14,8 +15,8 @@ export class AppComponent implements OnInit{
   title = 'prueba2Angular';
 
   constructor(private barra: ProgessBarService, public logout: LoginService,
-    private _snackBar: MatSnackBar){
-    }
+    private _snackBar: MatSnackBar, private inactividad: GuardianService){
+  }
 
   public cargandoIndex: boolean = true;
 
@@ -30,6 +31,7 @@ export class AppComponent implements OnInit{
   cerrarSesion(){
     this.logout.cerrarSesion();
     this.openSnackBar("Cerro sesión", "Done..");
+    this.inactividad.parar.unsubscribe();
   }
 
   openSnackBar(message: string, action: string) {
@@ -38,6 +40,14 @@ export class AppComponent implements OnInit{
       horizontalPosition: "right",
       verticalPosition: "top"
     });
+  }
+
+  @HostListener('window:mousemove') refreshUserState() {
+    if(this.logout.estaLogueado() == true){
+      clearTimeout(this.inactividad.userActivity);
+      this.inactividad.setTimeout();
+    }
+    
   }
 
 }

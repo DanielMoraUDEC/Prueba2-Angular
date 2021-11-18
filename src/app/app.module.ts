@@ -21,7 +21,15 @@ import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
-import { UsuarioIdComponent } from './pages/usuario-id/usuario-id.component';
+import { UsuarioIdComponent } from './pages/usuario/usuario-id/usuario-id.component';
+import { CrearUsuComponent } from './pages/usuario/crear-usu/crear-usu.component';
+import { ConductorComponent } from './pages/conductor/conductor.component';
+import { AsociarComponent } from './pages/vehiculo/asociar/asociar.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { EditarComponent } from './pages/usuario/editar/editar.component';
+import { EliminarComponent } from './pages/usuario/eliminar/eliminar.component';
+import { AsociadosComponent } from './pages/vehiculo/asociados/asociados.component';
+import { NoAsociadosComponent } from './pages/vehiculo/no-asociados/no-asociados.component';
 
 
 export function tokenGetter(){
@@ -43,11 +51,16 @@ export function tokenGetter(){
     IndexComponent,
     NotAllowedComponent,
     UsuarioComponent,
-    UsuarioIdComponent
+    UsuarioIdComponent,
+    CrearUsuComponent,
+    ConductorComponent,
+    AsociarComponent,
+    EditarComponent,
+    EliminarComponent,
+    AsociadosComponent,
+    NoAsociadosComponent
   ],
   imports: [
-
-
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -64,11 +77,16 @@ export function tokenGetter(){
       
     }),
   ],
+  entryComponents:[
+    AsociarComponent
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptorService,
       multi: true
+    }, {
+      provide: LocationStrategy, useClass: HashLocationStrategy
     }
   ],
   bootstrap: [AppComponent]

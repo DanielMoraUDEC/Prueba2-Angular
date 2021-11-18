@@ -12,7 +12,14 @@ import { IndexComponent } from './pages/index/index.component';
 import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { GuardianService } from './share/guardian.service';
-import { UsuarioIdComponent } from './pages/usuario-id/usuario-id.component';
+import { UsuarioIdComponent } from './pages/usuario/usuario-id/usuario-id.component';
+import { CrearUsuComponent } from './pages/usuario/crear-usu/crear-usu.component';
+import { ConductorComponent } from './pages/conductor/conductor.component';
+import { EditarComponent } from './pages/usuario/editar/editar.component';
+import { AsociadosComponent } from './pages/vehiculo/asociados/asociados.component';
+import { NoAsociadosComponent } from './pages/vehiculo/no-asociados/no-asociados.component';
+
+
 const routes: Routes = [
   {path: '', component:IndexComponent},
   {path: 'index', component:IndexComponent},
@@ -22,11 +29,16 @@ const routes: Routes = [
   {path: 'ingresar', component:IngresarComponent},
   {path: 'vehiculo', component:VehiculoComponent, canActivate: [GuardianService], children:[
     {path: 'crearVehi', component:CrearVehiComponent, canActivate: [GuardianService]},
+    {path: 'asociados/:idVeh', component:AsociadosComponent, canActivate: [GuardianService]},
+    {path: 'noAsociados/:idVeh', component:NoAsociadosComponent, canActivate: [GuardianService]},
     {path: 'editVehi/:idVeh', component:EditVehiComponent, canActivate: [GuardianService]}
   ]},
   {path: 'usuario', component:UsuarioComponent, canActivate: [GuardianService], children:[
-    {path: 'listar/:Id', component:UsuarioIdComponent, canActivate: [GuardianService]},
+    {path: 'listar/:idCon', component:UsuarioIdComponent, canActivate: [GuardianService]},
+    {path: 'editar/:idCon', component:EditarComponent, canActivate: [GuardianService]},
+    {path: 'crearUsuario', component:CrearUsuComponent, canActivate: [GuardianService]}
   ]},
+  {path: 'conductor', component:ConductorComponent, canActivate: [GuardianService]},
   {path: 'error', component:ErrorComponent},
   {path: 'notAllowed', component:NotAllowedComponent},
   {path: '**', component:NoFoundComponent}

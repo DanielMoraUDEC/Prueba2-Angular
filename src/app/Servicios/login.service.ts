@@ -3,6 +3,7 @@ import { environment } from './../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../Models/user';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,18 @@ export class LoginService {
   public estaLogueado(): boolean{
     const tk = sessionStorage.getItem(environment.TOKEN);
     return tk != null;
+  }
+
+  public obtenerRol(): string{
+    if(this.estaLogueado() == true){
+      const helper = new JwtHelperService();
+      let token = sessionStorage.getItem(environment.TOKEN);
+      const decodeToken = helper.decodeToken(token);
+      const rol = decodeToken.authorities[0];
+      return rol;
+    }else{
+      return null;
+    }
+    
   }
 }

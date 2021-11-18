@@ -46,21 +46,30 @@
       <span>Home</span>
     </button>
     <mat-divider></mat-divider>
-    <div [hidden]= "logout.estaLogueado() == false">
-      <button mat-menu-item style="cursor: pointer" routerLink="/buscar" >
-        <mat-icon>apartment</mat-icon>
-        <span>Ciudades</span>
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item style="cursor: pointer" routerLink="/vehiculo" >
-        <mat-icon>directions_car</mat-icon>
-        <span>Vehiculos</span>
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item style="cursor: pointer" routerLink="/usuario" >
-        <mat-icon>account_box</mat-icon>
-        <span>Conductores</span>
-      </button>
+    <div [hidden]= "logout.estaLogueado() == false ">
+      <div [hidden]= "logout.obtenerRol() == 'Conductor' ">
+        <button mat-menu-item style="cursor: pointer" routerLink="/buscar" >
+          <mat-icon>apartment</mat-icon>
+          <span>Ciudades</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item style="cursor: pointer" routerLink="/vehiculo" >
+          <mat-icon>directions_car</mat-icon>
+          <span>Vehiculos</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item style="cursor: pointer" routerLink="/usuario" >
+          <mat-icon>account_box</mat-icon>
+          <span>Conductores</span>
+        </button>
+      </div>
+      <div [hidden]= "logout.obtenerRol() == 'Administrador'">
+        <button mat-menu-item style="cursor: pointer" routerLink="/conductor" >
+          <mat-icon>badge</mat-icon>
+          <span>Conductor</span>
+        </button>
+      </div>
+     
     </div>
     <mat-divider></mat-divider>
     <button mat-menu-item style="cursor: pointer" routerLink="/help" >

@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="">
+        <h1 class="center">Usuario</h1>
+    
+        <br>
+        <mat-divider></mat-divider>
+
+        <h2>Información del empleado</h2>
+        <br>
+
+        <div class="tarjeta">
+            <div>
+                <mat-label><b>Nombre:</b> {{usuario.nombre}}</mat-label>
+            </div>
+            <div>
+                <mat-label><b>Apellido:</b> {{usuario.apellido}}</mat-label>
+            </div>
+            <div>
+                <mat-label><b>Tipo Documento:</b> {{usuario.tipoDocumento.nombre}}</mat-label>
+            </div>
+            <div>
+                <mat-label><b>Documento:</b> {{usuario.documento}}</mat-label>
+            </div>
+            <div>
+                <mat-label><b>Correo:</b> {{usuario.correo}}</mat-label>
+            </div>
+            <div>
+                <mat-label><b>Cargo:</b> {{usuario.rol.nombre}}</mat-label>
+            </div>
+            <div>
+                <mat-label><b>Nick:</b> {{usuario.nick}}</mat-label>
+            </div>
+            <div>
+                <mat-label><b>Celular:</b> {{usuario.celular}}</mat-label>
+            </div>
+            <div>
+                <mat-label><b>Celular Aux:</b> {{usuario.celularAux}}</mat-label>
+            </div>
+            <div>
+                <mat-label><b>Ciudad:</b> {{usuario.ciudad.nombre}}</mat-label>
+            </div>
+            <div>
+                <mat-label><b>Dirección:</b> {{usuario.direccion}}</mat-label>
+            </div>
+            
+        </div>
+       
+             
+    </div>
+    <br>
+    <button mat-raised-button color="primary" [routerLink]="['/usuario']"><mat-icon>west</mat-icon></button>
+    
+</div>

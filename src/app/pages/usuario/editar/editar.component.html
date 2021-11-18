@@ -1,0 +1,183 @@
+<h1 class="center">Actualizar Usuario</h1>
+
+
+    <br>
+    <mat-divider></mat-divider>
+
+    <form class="example-form" [formGroup]="form" (ngSubmit)="save($event)">
+
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre</mat-label>
+                <input type="text" matInput value="" formControlName="nombre" [(ngModel)]="nombre" >
+              </mat-form-field>
+              <div *ngIf="form.get('nombre').errors && form.get('nombre').touched">
+                <mat-label *ngIf="form.get('nombre').hasError('required')">
+                  Es un campo requerido
+                </mat-label>
+              </div>
+        </div>
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Apellido</mat-label>
+                <input  type="text" matInput value="" formControlName="apellido" [(ngModel)]="apellido">
+              </mat-form-field>
+              <div *ngIf="form.get('apellido').errors && form.get('apellido').touched">
+                <mat-label *ngIf="form.get('apellido').hasError('required')">
+                  Es un campo requerido
+                </mat-label>
+              </div>
+        </div>
+        
+        <div>
+          <mat-form-field appearance="fill">
+              <mat-label>Tipo Documento</mat-label>
+              <mat-select formControlName="tipoDocumento" [(ngModel)]="tipoDocumento" >
+                <mat-option *ngFor="let tipoDoc of tipoDoc" [value]="tipoDoc.value">
+                  {{tipoDoc.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="form.get('tipoDocumento').errors && form.get('tipoDocumento').touched">
+              <mat-label *ngIf="form.get('tipoDocumento').hasError('required')">
+                Es un campo requerido
+              </mat-label>
+            </div> 
+        </div>
+
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Documento</mat-label>
+                <input  type="text" matInput formControlName="documento" (input)="inputValidatorDoc($event)" [(ngModel)]="documento" value="">
+              </mat-form-field>
+              <div *ngIf="form.get('documento').errors && form.get('documento').touched">
+                <mat-label *ngIf="form.get('documento').hasError('required')">
+                  Es un campo requerido
+                </mat-label>
+                <mat-label *ngIf="form.get('documento').hasError('maxlength')">
+                  Campo supera el número de caracteres
+                </mat-label>
+                <mat-label *ngIf="form.get('documento').hasError('minlength')">
+                  Campo es inferior al número de caracteres
+                </mat-label>
+              </div>
+              
+        </div>
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Nick</mat-label>
+                <input  type="text" matInput  formControlName="nick" [(ngModel)]="nick" value="">
+              </mat-form-field>
+              <div *ngIf="form.get('nick').errors && form.get('nick').touched">
+                <mat-label *ngIf="form.get('nick').hasError('required')">
+                  Es un campo requerido
+                </mat-label>
+              </div>
+        </div>
+
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Clave</mat-label>
+                <input  type="password" matInput formControlName="clave" >
+              </mat-form-field>
+        </div>
+        
+        <div>
+          <mat-form-field appearance="fill">
+              <mat-label>Departamento</mat-label>
+              <mat-select formControlName="departamento" (selectionChange)="listarCiudades($event.value)" [(ngModel)]="departamento">
+                <mat-option *ngFor="let departamento of listaDep" [value]="departamento.idDepartamento">
+                  {{departamento.nombre}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="form.get('departamento').errors && form.get('departamento').touched">
+              <mat-label *ngIf="form.get('departamento').hasError('required')">
+                Es un campo requerido
+              </mat-label>
+            </div> 
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Ciudad</mat-label>
+            <mat-select formControlName="ciudad" [(ngModel)]="ciudad">
+              <mat-option *ngFor="let ciudad of listaCiu" [value]="ciudad.idCiudad">
+                {{ciudad.nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div *ngIf="form.get('ciudad').errors && form.get('ciudad').touched">
+            <mat-label *ngIf="form.get('ciudad').hasError('required')">
+              Es un campo requerido
+            </mat-label>
+          </div> 
+    </div>
+      
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Direccion</mat-label>
+                <input  type="text" matInput formControlName="direccion" [(ngModel)]="direccion" value="">
+              </mat-form-field>
+              <div *ngIf="form.get('direccion').errors && form.get('direccion').touched">
+                <mat-label *ngIf="form.get('direccion').hasError('required')">
+                  Es un campo requerido
+                </mat-label>
+              </div>
+        </div>
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>celular</mat-label>
+                <input  type="text" matInput formControlName="celular" (input)="inputValidatorDoc($event)" [(ngModel)]="celular" value="">
+              </mat-form-field>
+              <div *ngIf="form.get('celular').errors && form.get('celular').touched">
+                <mat-label *ngIf="form.get('celular').hasError('required')">
+                  Es un campo requerido
+                </mat-label>
+                <mat-label *ngIf="form.get('celular').hasError('maxlength')">
+                  Campo supera el número de caracteres
+                </mat-label>
+                <mat-label *ngIf="form.get('celular').hasError('minlength')">
+                  Campo es inferior al número de caracteres
+                </mat-label>
+              </div>
+        </div>
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Celular Auxiliar</mat-label>
+                <input  type="text" matInput formControlName="celularAux" (input)="inputValidatorDoc($event)" [(ngModel)]="celularAux" value="">
+              </mat-form-field>
+              <div *ngIf="form.get('celularAux').errors && form.get('celularAux').touched">
+                <mat-label *ngIf="form.get('celularAux').hasError('required')">
+                  Es un campo requerido
+                </mat-label>
+                <mat-label *ngIf="form.get('celularAux').hasError('maxlength')">
+                  Campo supera el número de caracteres
+                </mat-label>
+                <mat-label *ngIf="form.get('celularAux').hasError('minlength')">
+                  Campo es inferior al número de caracteres
+                </mat-label>
+              </div>
+        </div>
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Correo</mat-label>
+                <input  type="text" matInput formControlName="correo" [(ngModel)]="correo" value="">
+              </mat-form-field>
+              <div *ngIf="form.get('correo').errors && form.get('correo').touched">
+                <mat-label *ngIf="form.get('correo').hasError('required')">
+                  Es un campo requerido
+                </mat-label>
+                <mat-label *ngIf="form.get('correo').hasError('email')">
+                  No es un email valido
+                </mat-label>
+              </div>
+        </div>
+
+
+        <div>
+          <button type="submit" mat-raised-button color="primary"><mat-icon>edit</mat-icon>Actualizar</button>
+        </div>
+      </form>
+
+<button mat-raised-button color="primary" [routerLink]="['/usuario']"><mat-icon>west</mat-icon></button>

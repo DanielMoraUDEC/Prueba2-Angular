@@ -8,11 +8,12 @@
 
         <div id="agregar">
             
+            
             <mat-form-field>
                 <mat-label>Id conductor</mat-label>
-                <input  type="text" matInput placeholder="Ejm: 1" formControlName="" value="" [(ngModel)]="idConductor">
+                <input  type="text" matInput placeholder="Ejm: 1" value="" [(ngModel)]="idConductor">
             </mat-form-field>
-            <button mat-raised-button [routerLink]="['listar']"><mat-icon>search</mat-icon> Buscar</button>
+            <button mat-raised-button (click)="buscarUsuario()"><mat-icon>search</mat-icon> Buscar</button>
 
             <button mat-raised-button color="accent"[routerLink]="['crearUsuario']"><mat-icon>add</mat-icon> Agregar</button>
         </div>
@@ -27,6 +28,10 @@
                 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
          
                     <!-- Name Column -->
+                    <ng-container matColumnDef="idUsuario">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID </th>
+                        <td mat-cell *matCellDef="let element"> {{element.idUsuario}} </td>
+                    </ng-container>
                     <ng-container matColumnDef="nombre">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
                         <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
@@ -51,11 +56,8 @@
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Celular </th>
                         <td mat-cell *matCellDef="let element"> {{element.celular}} </td>
                     </ng-container>
-                    <ng-container matColumnDef="celularAux">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cel. Auxiliar </th>
-                        <td mat-cell *matCellDef="let element"> {{element.celularAux}} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="correo">
+
+                    <ng-container matColumnDef="correo" >
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo </th>
                         <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
                     </ng-container>   
@@ -63,18 +65,12 @@
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Cargo </th>
                         <td mat-cell *matCellDef="let element"> {{element.rol.nombre}} </td>
                     </ng-container>
-                    <ng-container matColumnDef="ciudad">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ciudad </th>
-                        <td mat-cell *matCellDef="let element"> {{element.ciudad.nombre}} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="direccion">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Dirección </th>
-                        <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
-                    </ng-container>
+                    
                     <ng-container matColumnDef="acciones">
                         <th mat-header-cell *matHeaderCellDef> Acciones </th>
                         <td mat-cell *matCellDef="let element">
-                        <button mat-raised-button color="primary" value=""[routerLink]="['editVehi/',element.idVehiculo]"><mat-icon>edit</mat-icon> Editar</button>
+                        <button mat-raised-button color="primary" value=""[routerLink]="['editar/',element.idUsuario]"><mat-icon>edit</mat-icon> Editar</button>
+                        <button mat-raised-button color="warn" (click)="openDialog(element.idUsuario)"><mat-icon>delete</mat-icon> Eliminar</button>
                         </td>
                     </ng-container>
 

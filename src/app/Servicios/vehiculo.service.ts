@@ -22,7 +22,13 @@ export class VehiculoService {
   public guardar(vehiculo: Vehiculo){
     return this.http.post(`${this.url}/guardar`,vehiculo);
   }
+  
   public editar(vehiculo: Vehiculo){
     return this.http.put(`${this.url}/editar`,vehiculo);
   }
+
+  public asociar(idVehiculo: number, idUsuario: number){
+    return this.http.post(`${this.url}/asociarcondcutor/${idUsuario}/${idVehiculo}`, null);
+  }
+
 }

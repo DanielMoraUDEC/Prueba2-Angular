@@ -33,7 +33,7 @@ export class GuardianService implements CanActivate{
 
         
         this.parar = this.userInactive.subscribe(() => {
-          console.log('Usuario inactivo x 60 segundos')
+          console.log('Usuario inactivo x 10 minutos')
           this.login.cerrarSesion();
           this.router.navigate(['/ingresar']);
           this.openSnackBar("Supero el tiempo de inactividad", "Ups...");       
@@ -49,6 +49,9 @@ export class GuardianService implements CanActivate{
           return true;
         }
         else if(url.includes('vehiculo') && rol === "Administrador"){
+          return true;
+        }
+        else if(url.includes('conductor') && rol === "Conductor"){
           return true;
         }
         else{
@@ -81,7 +84,7 @@ export class GuardianService implements CanActivate{
 
   setTimeout() {
     if(this.login.estaLogueado() == true){
-      this.userActivity = setTimeout(() => this.userInactive.next(undefined), 60000);
+      this.userActivity = setTimeout(() => this.userInactive.next(undefined), 600000);
     }
   }
   

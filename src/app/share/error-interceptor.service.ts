@@ -22,6 +22,7 @@ export class ErrorInterceptorService implements HttpInterceptor{
     resultJSON: ResultJson;
     ResultJsonString : any;
 
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     //throw new Error('Method not implemented.');
     return next.handle(req).pipe(retry(environment.REINTENTOS)).pipe

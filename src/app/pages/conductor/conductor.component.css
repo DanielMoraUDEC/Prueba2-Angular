@@ -1,0 +1,51 @@
+.column {
+    flex: 50%;
+    padding: 20px;
+  }
+
+  .row {
+    display: flex;
+  }
+
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+  }
+  .center{
+    text-align: center;
+    font-size: 4em;
+    color:white;
+    letter-spacing: .1em;
+    
+  }
+
+  h2{
+    font-size: 2em;
+    color: #e0dfdc;
+
+  }
+
+  .container{
+      margin: 0;
+      padding: 5%;
+      padding-left: 20%;
+      padding-right: 20%;
+      height: 230px;
+      width: auto;
+  }
+  
+  .tarjeta{
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 20px;
+    background-color: black;
+    opacity: 0.4;
+    height: 200px;
+    color: blanchedalmond;
+    text-align: center;
+  }
+
+  p{
+      font-size: 1em;
+  }

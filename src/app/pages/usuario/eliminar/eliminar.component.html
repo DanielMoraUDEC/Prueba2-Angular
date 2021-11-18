@@ -1,0 +1,12 @@
+<div class="contenedor">
+    <h1 class="center" mat-dialog-title>¿Está seguro de eliminar el usuario?</h1>
+    <div mat-dialog-content>
+        <p></p>
+        <mat-form-field>
+        <button mat-raised-button color="primary" (click)="onNoClick()" style="margin-right:6px;">Cancelar</button>
+        <button mat-raised-button color="warn" [mat-dialog-close]="true" cdkFocusInitial>eliminar</button>
+        </mat-form-field>
+    </div>
+</div>
+
+

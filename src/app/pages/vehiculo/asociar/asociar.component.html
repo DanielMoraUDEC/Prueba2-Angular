@@ -1,0 +1,8 @@
+<div class="contenedor">
+  <h1 class="center" mat-dialog-title>¿Está seguro de asociar el usuario: {{data.usuario}} al vehiculo: {{data.vehiculo}}?</h1>
+  <div mat-dialog-actions style="display: inline-block;">
+    <button mat-raised-button color="accent" [mat-dialog-close]="true" cdkFocusInitial >Asociar</button>
+    <button mat-raised-button color="warn" (click)="onNoClick()">Cancelar</button>
+  </div>
+</div>
+

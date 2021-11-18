@@ -8,6 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProgessBarService } from 'src/app/Servicios/progess-bar.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AsociarComponent } from './asociar/asociar.component';
+
 
 @Component({
   selector: 'app-vehiculo',
@@ -16,7 +19,7 @@ import { ProgessBarService } from 'src/app/Servicios/progess-bar.service';
 })
 export class VehiculoComponent implements OnInit {
 
-  displayedColumns: string[] = ['placa', 'modelo', 'marca','tipoVehiuclo','capacidad', 'acciones'];
+  displayedColumns: string[] = ['idVehiculo','placa', 'modelo', 'marca','tipoVehiuclo','capacidad', 'acciones','conductores'];
 
   dataSource = new MatTableDataSource<Vehiculo>();
 
@@ -29,8 +32,11 @@ export class VehiculoComponent implements OnInit {
   pageSize: number = 5;
   length: number = 10; 
   pageIndex = 0;
+
+  placa: string;
+  resultadoDialog: string;
  
-  constructor(private vehiculoService: VehiculoService,
+  constructor(private vehiculoService: VehiculoService, public dialog: MatDialog, 
   private _snackBar: MatSnackBar, public route: ActivatedRoute, private barra: ProgessBarService) { }
 
   ngOnInit(): void {
@@ -83,6 +89,22 @@ export class VehiculoComponent implements OnInit {
     }
   }
 
+  openDialog(){
+
+    const vehiculo = new Vehiculo();
+
+    vehiculo.placa = this.placa;
+    const dialogRef = this.dialog.open(AsociarComponent, {
+      width: '250px',
+      data: vehiculo
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.resultadoDialog = result;
+    });
+
+  }
     
 
 }

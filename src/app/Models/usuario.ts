@@ -1,5 +1,7 @@
 import { Ciudad } from './ciudad';
 export class Usuario {
+    
+   idUsuario: number;
    documento: string;
    nombre: string;
    apellido: string;
@@ -9,14 +11,15 @@ export class Usuario {
    celular: string;
    celularAux: string;
    correo: string;
-   tipoDocumento: {
-       idTipoDocumento: number;
-       nombre: string;
+   tipoDocumento:{
+       idTipoDocumento: number;    
    }
    rol:{
        idRol:number;
-       nombre: string;
    }
-   ciudad: Ciudad;
+   ciudad:{
+       idCiudad: number;
+   }
+   
 }
 

@@ -4,6 +4,6 @@ export class Ciudad {
 
     idCiudad: number;
     nombre: string;
-    departamento : Departamento;
+    //departamento : Departamento;
 
 }

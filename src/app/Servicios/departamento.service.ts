@@ -25,10 +25,9 @@ export class DepartamentoService {
   }
   */
   public listar(){
-    return this.http.get<Departamento[]>(this.url+"/listar" 
-    );
+    return this.http.get<Departamento[]>(this.url+"/listar");
   }
-  public listarCiudades(idDepartamento){
+  public listarCiudades(idDepartamento: number){
     return this.http.get<Ciudad[]>(this.url2+"/listarPorDepartamnto/"+idDepartamento);
   }
 
